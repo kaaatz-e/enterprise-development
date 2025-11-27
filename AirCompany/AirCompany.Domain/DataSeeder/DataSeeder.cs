@@ -45,7 +45,7 @@ public class DataSeeder
     /// <summary>
     /// Initializes <see cref="AircraftModel"/> with test data
     /// </summary>
-    public static List<AircraftModel> InitAircraftModel(List<AircraftFamily> families) => [
+    private static List<AircraftModel> InitAircraftModel(List<AircraftFamily> families) => [
         new AircraftModel 
         {
             ModelName = "SSJ100-95LR", 

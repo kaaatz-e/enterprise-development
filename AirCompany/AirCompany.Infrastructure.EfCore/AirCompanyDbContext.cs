@@ -92,9 +92,6 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
             builder.Property(f => f.Duration)
                     .HasElementName("duration");
 
-            builder.HasIndex(f => f.Code)
-                    .IsUnique();
-
             builder.Property(f => f.AircraftModel)
                     .IsRequired()
                     .HasElementName("aircraft_model_id"); 
@@ -119,8 +116,6 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
 
             builder.Property(p => p.BirthDate)
                     .HasElementName("birth_date");
-
-            builder.HasIndex(x => x.PassportNumber).IsUnique();
         });
 
         modelBuilder.Entity<Ticket>(builder =>

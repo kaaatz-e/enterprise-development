@@ -3,7 +3,7 @@ using AirCompany.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AirCompany.Infrastructure.EfCore.Repository;
-internal class AircraftFamilyEfCoreRepository(AirCompanyDbContext context) : IRepository<AircraftFamily>
+public class AircraftFamilyEfCoreRepository(AirCompanyDbContext context) : IRepository<AircraftFamily>
 {
     public async Task<AircraftFamily> Create(AircraftFamily entity)
     {

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Aspire.MongoDB.Driver" Version="13.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\AirCompany.Application\AirCompany.Application.csproj" />
+    <ProjectReference Include="..\AirCompany.Infrastructure.EfCore\AirCompany.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\AirCompany.ServiceDefaults\AirCompany.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>
