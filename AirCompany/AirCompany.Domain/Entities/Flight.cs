@@ -43,5 +43,7 @@ public class Flight
     /// <summary>
     /// <see cref="AircraftModel"/> used for this flight
     /// </summary>
-    public required AircraftModel AircraftModel { get; set; }
+    public AircraftModel? AircraftModel { get; set; }
+
+    public required Guid AircraftModelId { get; set; }
 }

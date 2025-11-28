@@ -13,12 +13,16 @@ public class Ticket
     /// <summary>
     /// <see cref="Flight"/> associated with this ticket
     /// </summary>
-    public required Flight Flight { get; set; }
+    public Flight? Flight { get; set; }
+
+    public required Guid FlightId { get; set; }
 
     /// <summary>
     /// <see cref="Passenger"/> who owns this ticket
     /// </summary>
-    public required Passenger Passenger { get; set; }
+    public Passenger? Passenger { get; set; }
+
+    public required Guid PassengerId { get; set; }
 
     /// <summary>
     /// The seat number assigned to this ticket

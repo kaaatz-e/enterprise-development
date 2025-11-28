@@ -9,9 +9,9 @@ using System.Linq;
 namespace AirCompany.Application.Services;
 
 public class AnalyticsService(
-    IRepository<Flight> flightRepository,
-    IRepository<Passenger> passengerRepository,
-    IRepository<Ticket> ticketRepository,
+    IRepository<Flight, Guid> flightRepository,
+    IRepository<Passenger, Guid> passengerRepository,
+    IRepository<Ticket, Guid> ticketRepository,
     IMapper mapper) : IAnalyticsService
 {
     public async Task<IList<FlightDto>> GetTop5FlightsByPassengerCount()
@@ -20,7 +20,7 @@ public class AnalyticsService(
         var tickets = await ticketRepository.GetAll();
 
         var topFlights = flights
-            .OrderByDescending(f => tickets.Count(t => t.Flight.Id == f.Id))
+            .OrderByDescending(f => tickets.Count(t => t.FlightId == f.Id))
             .Take(5)
             .ToList();
 
@@ -48,8 +48,8 @@ public class AnalyticsService(
         var passengers = await passengerRepository.GetAll();
 
         var passengerIds = tickets
-            .Where(t => t.Flight.Id == flightId && t.TotalBaggageWeightKg == 0)
-            .Select(t => t.Passenger.Id)
+            .Where(t => t.FlightId == flightId && t.TotalBaggageWeightKg == 0)
+            .Select(t => t.PassengerId)
             .Distinct()
             .ToList();
 
@@ -66,7 +66,7 @@ public class AnalyticsService(
         var flights = await flightRepository.GetAll();
 
         var result = flights
-            .Where(f => f.AircraftModel.Id == modelId
+            .Where(f => f.AircraftModelId == modelId
                         && f.DepartureDateTime >= startPeriod
                         && f.DepartureDateTime <= endPeriod)
             .ToList();

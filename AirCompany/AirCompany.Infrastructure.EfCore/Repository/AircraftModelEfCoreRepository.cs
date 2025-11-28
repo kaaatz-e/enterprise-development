@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace AirCompany.Infrastructure.EfCore.Repository;
-public class AircraftModelEfCoreRepository(AirCompanyDbContext context) : IRepository<AircraftModel>
+public class AircraftModelEfCoreRepository(AirCompanyDbContext context) : IRepository<AircraftModel, Guid>
 {
     public async Task<AircraftModel> Create(AircraftModel entity)
     {

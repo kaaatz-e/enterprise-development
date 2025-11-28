@@ -2,7 +2,7 @@
 
 namespace AirCompany.Application.Contracts.AircraftModel;
 
-public interface IAircraftModelService : IApplicationService<AircraftModelDto, AircraftModelCreateUpdateDto>
+public interface IAircraftModelService : IApplicationService<AircraftModelDto, AircraftModelCreateUpdateDto, Guid>
 {
 
     public Task<AircraftFamilyDto> GetAircraftFamily(Guid modelId);

@@ -1,6 +1,8 @@
 ﻿using AirCompany.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.EntityFrameworkCore.Extensions;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace AirCompany.Infrastructure.EfCore;
 
@@ -14,6 +16,8 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        Database.AutoTransactionBehavior = AutoTransactionBehavior.Never;
+
         modelBuilder.Entity<AircraftFamily>(builder =>
         {
             builder.ToCollection("aircraft_families");
@@ -56,9 +60,7 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
                     .IsRequired()
                     .HasElementName("cargo_capacity_kg");
 
-            builder.Property(am => am.AircraftFamily)
-                    .IsRequired()
-                    .HasElementName("aircraft_family_id");
+            builder.Property(m => m.AircraftFamilyId).HasElementName("family_id");
         });
 
         modelBuilder.Entity<Flight>(builder =>
@@ -71,7 +73,7 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
             builder.Property(f => f.Code)
                     .IsRequired()
                     .HasMaxLength(30)
-                    .HasElementName("code"); 
+                    .HasElementName("code");
 
             builder.Property(f => f.DepartureAirport)
                     .IsRequired()
@@ -84,17 +86,15 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
                     .HasElementName("arrival_airport");
 
             builder.Property(f => f.DepartureDateTime)
-                    .HasElementName("departure_date_time"); 
+                    .HasElementName("departure_date_time");
 
             builder.Property(f => f.ArrivalDateTime)
-                    .HasElementName("arrival_date_time"); 
+                    .HasElementName("arrival_date_time");
 
             builder.Property(f => f.Duration)
                     .HasElementName("duration");
 
-            builder.Property(f => f.AircraftModel)
-                    .IsRequired()
-                    .HasElementName("aircraft_model_id"); 
+            builder.Property(f => f.AircraftModelId).HasElementName("aircraft_model_id");
         });
 
         modelBuilder.Entity<Passenger>(builder =>
@@ -131,18 +131,14 @@ public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) 
                     .HasElementName("seat_number");
 
             builder.Property(t => t.HasHandLuggage)
-                    .HasElementName("has_hand_luggage"); 
+                    .HasElementName("has_hand_luggage");
 
             builder.Property(t => t.TotalBaggageWeightKg)
                     .HasElementName("total_baggage_weight_kg");
 
-            builder.Property(t => t.Flight) 
-                    .IsRequired()
-                    .HasElementName("flight_id");
+            builder.Property(t => t.FlightId).HasElementName("flight_id");
 
-            builder.Property(t => t.Passenger) 
-                    .IsRequired()
-                    .HasElementName("passenger_id");
+            builder.Property(t => t.PassengerId).HasElementName("passenger_id");
         });
     }
 }

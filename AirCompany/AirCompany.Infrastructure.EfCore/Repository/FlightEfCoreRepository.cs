@@ -3,7 +3,7 @@ using AirCompany.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AirCompany.Infrastructure.EfCore.Repository;
-public class FlightEfCoreRepository(AirCompanyDbContext context) : IRepository<Flight>
+public class FlightEfCoreRepository(AirCompanyDbContext context) : IRepository<Flight, Guid>
 {
     public async Task<Flight> Create(Flight entity)
     {

@@ -1,4 +1,6 @@
-﻿var builder = DistributedApplication.CreateBuilder(args);
+using Aspire.Hosting;
+
+var builder = DistributedApplication.CreateBuilder(args);
 
 var db = builder.AddMongoDB("mongo").AddDatabase("db");
 

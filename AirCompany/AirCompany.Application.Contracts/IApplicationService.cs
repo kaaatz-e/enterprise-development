@@ -1,8 +1,9 @@
 ﻿namespace AirCompany.Application.Contracts;
 
-public interface IApplicationService<TDto, TCreateUpdateDto>
+public interface IApplicationService<TDto, TCreateUpdateDto, TKey>
     where TDto : class
     where TCreateUpdateDto : class
+    where TKey : struct
 {
     public Task<TDto> Create(TCreateUpdateDto dto);
 

@@ -2,7 +2,7 @@
 using AirCompany.Application.Contracts.Passenger;
 
 namespace AirCompany.Application.Contracts.Ticket;
-public interface ITicketService: IApplicationService<TicketDto, TicketCreateUpdateDto>
+public interface ITicketService: IApplicationService<TicketDto, TicketCreateUpdateDto, Guid>
 {
     public Task<FlightDto> GetFlight(Guid ticketId);
 

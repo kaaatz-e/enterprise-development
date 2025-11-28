@@ -8,5 +8,5 @@ namespace AirCompany.Api.Host.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AircraftFamilyController(IApplicationService<AircraftFamilyDto, AircraftFamilyCreateUpdateDto> service, ILogger<AircraftFamilyController> logger)
-    : CrudControllerBase<AircraftFamilyDto, AircraftFamilyCreateUpdateDto>(service, logger);
+public class AircraftFamilyController(IApplicationService<AircraftFamilyDto, AircraftFamilyCreateUpdateDto, Guid> service, ILogger<AircraftFamilyController> logger)
+    : CrudControllerBase<AircraftFamilyDto, AircraftFamilyCreateUpdateDto, Guid>(service, logger);

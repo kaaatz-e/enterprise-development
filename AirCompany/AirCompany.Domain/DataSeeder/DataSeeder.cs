@@ -52,7 +52,7 @@ public class DataSeeder
             PassengerCapacity = 103, 
             CargoCapacityKg = 49450, 
             FlightRangeKm = 4578, 
-            AircraftFamily = families[0]
+            AircraftFamilyId = families[0].Id
         },
         new AircraftModel 
         {
@@ -60,7 +60,7 @@ public class DataSeeder
             PassengerCapacity = 138, 
             CargoCapacityKg = 68000, 
             FlightRangeKm = 4910, 
-            AircraftFamily = families[1]
+            AircraftFamilyId = families[1].Id
         },
         new AircraftModel 
         { 
@@ -68,7 +68,7 @@ public class DataSeeder
             PassengerCapacity = 189, 
             CargoCapacityKg = 79015, 
             FlightRangeKm = 5427, 
-            AircraftFamily = families[2]
+            AircraftFamilyId = families[2].Id
         },
         new AircraftModel 
         { 
@@ -76,7 +76,7 @@ public class DataSeeder
             PassengerCapacity = 408, 
             CargoCapacityKg = 317500, 
             FlightRangeKm = 11200, 
-            AircraftFamily = families[3]
+            AircraftFamilyId = families[3].Id
         },
         new AircraftModel 
         { 
@@ -84,7 +84,7 @@ public class DataSeeder
             PassengerCapacity = 78, 
             CargoCapacityKg = 37200, 
             FlightRangeKm = 3800, 
-            AircraftFamily = families[4]
+            AircraftFamilyId = families[4].Id
         },
         new AircraftModel 
         { 
@@ -92,7 +92,7 @@ public class DataSeeder
             PassengerCapacity = 244, 
             CargoCapacityKg = 93500, 
             FlightRangeKm = 5500, 
-            AircraftFamily = families[5]
+            AircraftFamilyId = families[5].Id
         },
         new AircraftModel 
         { 
@@ -100,7 +100,7 @@ public class DataSeeder
             PassengerCapacity = 440, 
             CargoCapacityKg = 230000, 
             FlightRangeKm = 9500, 
-            AircraftFamily = families[6]
+            AircraftFamilyId = families[6].Id
         },
         new AircraftModel 
         { 
@@ -108,7 +108,7 @@ public class DataSeeder
             PassengerCapacity = 522, 
             CargoCapacityKg = 396890, 
             FlightRangeKm = 13450, 
-            AircraftFamily = families[7]
+            AircraftFamilyId = families[7].Id
         },
         new AircraftModel 
         { 
@@ -116,7 +116,7 @@ public class DataSeeder
             PassengerCapacity = 440, 
             CargoCapacityKg = 268000, 
             FlightRangeKm = 12400, 
-            AircraftFamily = families[8]
+            AircraftFamilyId = families[8].Id
         },
         new AircraftModel 
         { 
@@ -124,7 +124,7 @@ public class DataSeeder
             PassengerCapacity = 149, 
             CargoCapacityKg = 75500, 
             FlightRangeKm = 4800, 
-            AircraftFamily = families[9]
+            AircraftFamilyId = families[9].Id
         }
     ];
 
@@ -140,7 +140,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 7, 6, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 7, 8, 0, 0),
             Duration = TimeSpan.FromHours(2),
-            AircraftModel = models[0]
+            AircraftModelId = models[0].Id
         },
         new Flight
         { 
@@ -150,7 +150,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 8, 7, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 8, 8, 0, 0),
             Duration = TimeSpan.FromHours(1),
-            AircraftModel = models[1]
+            AircraftModelId = models[1].Id
         },
         new Flight
         { 
@@ -160,7 +160,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 9, 10, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 9, 11, 0, 0),
             Duration = TimeSpan.FromHours(1),
-            AircraftModel = models[2]
+            AircraftModelId = models[2].Id
         },
         new Flight
         { 
@@ -170,7 +170,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 10, 23, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 11, 3, 0, 0),
             Duration = TimeSpan.FromHours(4),
-            AircraftModel = models[3]
+            AircraftModelId = models[3].Id
         },
         new Flight
         {
@@ -180,7 +180,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 12, 10, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 12, 13, 0, 0),
             Duration = TimeSpan.FromHours(3),
-            AircraftModel = models[4]
+            AircraftModelId = models[4].Id
         },
         new Flight
         {
@@ -190,7 +190,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 13, 22, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 14, 0, 0, 0),
             Duration = TimeSpan.FromHours(2),
-            AircraftModel = models[5]
+            AircraftModelId = models[5].Id
         },
         new Flight
         {
@@ -200,7 +200,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 15, 7, 25, 0),
             ArrivalDateTime = new DateTime(2025, 10, 15, 14, 25, 0),
             Duration = TimeSpan.FromHours(5),
-            AircraftModel = models[6]
+            AircraftModelId = models[6].Id 
         },
         new Flight
         {
@@ -210,7 +210,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 16, 12, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 16, 15, 0, 0),
             Duration = TimeSpan.FromHours(3),
-            AircraftModel = models[7]
+            AircraftModelId = models[7].Id  
         },
         new Flight
         {
@@ -220,7 +220,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 17, 1, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 17, 19, 0, 0),
             Duration = TimeSpan.FromHours(18),
-            AircraftModel = models[8]
+            AircraftModelId = models[8].Id
         },
         new Flight
         {
@@ -230,7 +230,7 @@ public class DataSeeder
             DepartureDateTime = new DateTime(2025, 10, 18, 16, 0, 0),
             ArrivalDateTime = new DateTime(2025, 10, 18, 18, 0, 0),
             Duration = TimeSpan.FromHours(2),
-            AircraftModel = models[9]
+            AircraftModelId = models[9].Id
         }
         ];
 
@@ -257,33 +257,33 @@ public class DataSeeder
     /// Initializes <see cref="Ticket"/> with test data
     /// </summary>
     private static List<Ticket> InitTicket(List<Passenger> passengers, List<Flight> flights) => [
-        new Ticket {Flight = flights[0], Passenger = passengers[0], SeatNumber = "12A", HasHandLuggage = false, TotalBaggageWeightKg = 0},
-        new Ticket {Flight = flights[0], Passenger = passengers[1], SeatNumber = "12B", HasHandLuggage = false, TotalBaggageWeightKg = 18},
-        new Ticket {Flight = flights[0], Passenger = passengers[2], SeatNumber = "12C", HasHandLuggage = true, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[0].Id, PassengerId = passengers[0].Id, SeatNumber = "12A", HasHandLuggage = false, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[0].Id, PassengerId = passengers[1].Id, SeatNumber = "12B", HasHandLuggage = false, TotalBaggageWeightKg = 18},
+        new Ticket {FlightId = flights[0].Id, PassengerId = passengers[2].Id, SeatNumber = "12C", HasHandLuggage = true, TotalBaggageWeightKg = 0},
 
-        new Ticket {Flight = flights[1], Passenger = passengers[3], SeatNumber = "15D", HasHandLuggage = true, TotalBaggageWeightKg = 0},
-        new Ticket {Flight = flights[1], Passenger = passengers[4], SeatNumber = "15E", HasHandLuggage = false, TotalBaggageWeightKg = 7},
-        new Ticket {Flight = flights[1], Passenger = passengers[5], SeatNumber = "15F", HasHandLuggage = true, TotalBaggageWeightKg = 10},
+        new Ticket {FlightId = flights[1].Id, PassengerId = passengers[3].Id, SeatNumber = "15D", HasHandLuggage = true, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[1].Id, PassengerId = passengers[4].Id, SeatNumber = "15E", HasHandLuggage = false, TotalBaggageWeightKg = 7},
+        new Ticket {FlightId = flights[1].Id, PassengerId = passengers[5].Id, SeatNumber = "15F", HasHandLuggage = true, TotalBaggageWeightKg = 10},
 
-        new Ticket {Flight = flights[2], Passenger = passengers[6], SeatNumber = "7A", HasHandLuggage = false, TotalBaggageWeightKg = 13},
-        new Ticket {Flight = flights[2], Passenger = passengers[7], SeatNumber = "7B", HasHandLuggage = false, TotalBaggageWeightKg = 25},
+        new Ticket {FlightId = flights[2].Id, PassengerId = passengers[6].Id, SeatNumber = "7A", HasHandLuggage = false, TotalBaggageWeightKg = 13},
+        new Ticket {FlightId = flights[2].Id, PassengerId = passengers[7].Id, SeatNumber = "7B", HasHandLuggage = false, TotalBaggageWeightKg = 25},
 
-        new Ticket {Flight = flights[3], Passenger = passengers[10], SeatNumber = "21C", HasHandLuggage = true, TotalBaggageWeightKg = 0},
-        new Ticket {Flight = flights[3], Passenger = passengers[11], SeatNumber = "21D", HasHandLuggage = false, TotalBaggageWeightKg = 12},
+        new Ticket {FlightId = flights[3].Id, PassengerId = passengers[10].Id, SeatNumber = "21C", HasHandLuggage = true, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[3].Id, PassengerId = passengers[11].Id, SeatNumber = "21D", HasHandLuggage = false, TotalBaggageWeightKg = 12},
 
-        new Ticket {Flight = flights[4], Passenger = passengers[4], SeatNumber = "5A", HasHandLuggage = false, TotalBaggageWeightKg = 17},
-        new Ticket {Flight = flights[4], Passenger = passengers[8], SeatNumber = "5B", HasHandLuggage = true, TotalBaggageWeightKg = 0},
-        new Ticket {Flight = flights[4], Passenger = passengers[10], SeatNumber = "5C", HasHandLuggage = false, TotalBaggageWeightKg = 14},
+        new Ticket {FlightId = flights[4].Id, PassengerId = passengers[4].Id, SeatNumber = "5A", HasHandLuggage = false, TotalBaggageWeightKg = 17},
+        new Ticket {FlightId = flights[4].Id, PassengerId = passengers[8].Id, SeatNumber = "5B", HasHandLuggage = true, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[4].Id, PassengerId = passengers[10].Id, SeatNumber = "5C", HasHandLuggage = false, TotalBaggageWeightKg = 14},
 
-        new Ticket {Flight = flights[5], Passenger = passengers[0], SeatNumber = "32A", HasHandLuggage = true, TotalBaggageWeightKg = 5},
-        new Ticket {Flight = flights[5], Passenger = passengers[5], SeatNumber = "32B", HasHandLuggage = true, TotalBaggageWeightKg = 8},
+        new Ticket {FlightId = flights[5].Id, PassengerId = passengers[0].Id, SeatNumber = "32A", HasHandLuggage = true, TotalBaggageWeightKg = 5},
+        new Ticket {FlightId = flights[5].Id, PassengerId = passengers[5].Id, SeatNumber = "32B", HasHandLuggage = true, TotalBaggageWeightKg = 8},
 
-        new Ticket {Flight = flights[6], Passenger = passengers[1], SeatNumber = "14E", HasHandLuggage = false, TotalBaggageWeightKg = 0},
-        new Ticket {Flight = flights[6], Passenger = passengers[2], SeatNumber = "14F", HasHandLuggage = true, TotalBaggageWeightKg = 15},
+        new Ticket {FlightId = flights[6].Id, PassengerId = passengers[1].Id, SeatNumber = "14E", HasHandLuggage = false, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[6].Id, PassengerId = passengers[2].Id, SeatNumber = "14F", HasHandLuggage = true, TotalBaggageWeightKg = 15},
 
-        new Ticket {Flight = flights[7], Passenger = passengers[9], SeatNumber = "18D", HasHandLuggage = false, TotalBaggageWeightKg = 0},
-        new Ticket {Flight = flights[7], Passenger = passengers[10], SeatNumber = "18C", HasHandLuggage = true, TotalBaggageWeightKg = 9},
-        new Ticket {Flight = flights[7], Passenger = passengers[11], SeatNumber = "18A", HasHandLuggage = true, TotalBaggageWeightKg = 11},
-        new Ticket {Flight = flights[7], Passenger = passengers[11], SeatNumber = "18E", HasHandLuggage = true, TotalBaggageWeightKg = 16}
+        new Ticket {FlightId = flights[7].Id, PassengerId = passengers[9].Id, SeatNumber = "18D", HasHandLuggage = false, TotalBaggageWeightKg = 0},
+        new Ticket {FlightId = flights[7].Id, PassengerId = passengers[10].Id, SeatNumber = "18C", HasHandLuggage = true, TotalBaggageWeightKg = 9},
+        new Ticket {FlightId = flights[7].Id, PassengerId = passengers[11].Id, SeatNumber = "18A", HasHandLuggage = true, TotalBaggageWeightKg = 11},
+        new Ticket {FlightId = flights[7].Id, PassengerId = passengers[11].Id, SeatNumber = "18E", HasHandLuggage = true, TotalBaggageWeightKg = 16}
         ];
 }

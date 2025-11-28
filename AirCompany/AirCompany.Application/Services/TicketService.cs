@@ -7,9 +7,9 @@ using AutoMapper;
 
 namespace AirCompany.Application.Services;
 public class TicketService(
-    IRepository<Ticket> ticketRepository,
-    IRepository<Flight> flightRepository,
-    IRepository<Passenger> passengerRepository,
+    IRepository<Ticket, Guid> ticketRepository,
+    IRepository<Flight, Guid> flightRepository,
+    IRepository<Passenger, Guid> passengerRepository,
     IMapper mapper) : ITicketService
 {
     public async Task<TicketDto> Create(TicketCreateUpdateDto dto)
@@ -17,7 +17,6 @@ public class TicketService(
         var entity = mapper.Map<Ticket>(dto);
 
         var last = await ticketRepository.GetAll();
-        entity.Id = Guid.NewGuid();
         var result = await ticketRepository.Create(entity);
 
         return mapper.Map<TicketDto>(result);
@@ -48,7 +47,7 @@ public class TicketService(
     public async Task<FlightDto> GetFlight(Guid ticketId)
     {
         var ticket = await ticketRepository.Get(ticketId) ?? throw new KeyNotFoundException($"Ticket with Id {ticketId} not found");
-        var flight = await flightRepository.Get(ticket.Flight.Id) ?? throw new KeyNotFoundException($"Flight with Id {ticket.Flight.Id} not found");
+        var flight = await flightRepository.Get(ticket.FlightId) ?? throw new KeyNotFoundException($"Flight with Id {ticket.FlightId} not found");
 
         return mapper.Map<FlightDto>(flight);
     }
@@ -56,7 +55,7 @@ public class TicketService(
     public async Task<PassengerDto> GetPassenger(Guid ticketId)
     {
         var ticket = await ticketRepository.Get(ticketId) ?? throw new KeyNotFoundException($"Ticket with Id {ticketId} not found");
-        var passenger = await passengerRepository.Get(ticket.Passenger.Id) ?? throw new KeyNotFoundException($"Passenger with Id {ticket.Passenger.Id} not found");
+        var passenger = await passengerRepository.Get(ticket.PassengerId) ?? throw new KeyNotFoundException($"Passenger with Id {ticket.PassengerId} not found");
 
         return mapper.Map<PassengerDto>(passenger);
     }

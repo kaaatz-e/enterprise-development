@@ -21,7 +21,7 @@ public class AirCompanyTests(DataSeeder seed) : IClassFixture<DataSeeder>
            .Select(f => new
            {
                Flight = f.Code,
-               passengerCount = seed.Tickets.Count(t => t.Flight.Id == f.Id)
+               passengerCount = seed.Tickets.Count(t => t.FlightId == f.Id)
            })
            .OrderByDescending(x => x.passengerCount)
            .Take(5)
@@ -63,18 +63,30 @@ public class AirCompanyTests(DataSeeder seed) : IClassFixture<DataSeeder>
     [Fact]
     public void GetPassengersWithZeroBaggageByFlight_ShouldReturnPassengersOrderedByName()
     {
-        var flight = seed.Flights.First(f => f.Code == "U6713");
+        var flightCode = "U6713";
 
-        var passengerInfo = seed.Tickets
-            .Where(t => t.TotalBaggageWeightKg == 0 && t.Flight.Code == flight.Code)
-            .OrderBy(t => t.Passenger.FullName)
-            .Select(t => t.Passenger)   
+        var expectedIds = seed.Tickets
+            .Where(t => t.Flight != null &&
+                       t.Flight.Code == flightCode &&
+                       t.TotalBaggageWeightKg == 0 &&
+                       t.Passenger != null)
+            .Select(t => t.PassengerId)
             .ToList();
 
-        //Assert
-        Assert.NotEmpty(passengerInfo);
-        var isOrdered = passengerInfo.SequenceEqual(passengerInfo.OrderBy(x => x.FullName));
-        Assert.True(isOrdered, "passengerInfo are not in alphabetical order by name");
+        // Act
+        var passengers = seed.Tickets
+            .Where(t => t.Flight != null &&
+                       t.Flight.Code == flightCode &&
+                       t.TotalBaggageWeightKg == 0 &&
+                       t.Passenger != null)
+            .Select(t => t.Passenger)
+            .OrderBy(p => p!.FullName)
+            .ToList();
+
+        // Assert
+        Assert.Equal(expectedIds.Count, passengers.Count);
+        var isOrdered = passengers.SequenceEqual(passengers.OrderBy(p => p!.FullName));
+        Assert.True(isOrdered, "Passengers are not in alphabetical order by name");
     }
 
     /// <summary>
@@ -85,14 +97,15 @@ public class AirCompanyTests(DataSeeder seed) : IClassFixture<DataSeeder>
     public void GetFlightsByModelAndPeriod_ShouldReturnFlightsForSelectedModelInPeriod()
     {
         var model = seed.AircraftModels.First(m => m.ModelName.Contains("A320NEO"));
+        var modelId = model.Id;
         var startPeriod = new DateTime(2025, 10, 1);
         var endPeriod = new DateTime(2025, 10, 31);
 
         var flight = seed.Flights
-        .First(f => f.AircraftModel == model && f.DepartureDateTime >= startPeriod && f.DepartureDateTime <= endPeriod);
+        .First(f => f.AircraftModelId == modelId && f.DepartureDateTime >= startPeriod && f.DepartureDateTime <= endPeriod);
 
         //Assert
-        Assert.Equal(model.Id, flight.AircraftModel.Id);
+        Assert.Equal(modelId, flight.AircraftModelId);
         Assert.InRange(flight.DepartureDateTime!.Value, startPeriod, endPeriod);
     }
 

@@ -7,7 +7,7 @@ namespace AirCompany.Api.Host.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class AircraftModelController(IAircraftModelService service, ILogger<AircraftModelController> logger)
-    : CrudControllerBase<AircraftModelDto, AircraftModelCreateUpdateDto>(service, logger)
+    : CrudControllerBase<AircraftModelDto, AircraftModelCreateUpdateDto, Guid>(service, logger)
 {
     [HttpGet("{id}/AircraftFamily")]
     [ProducesResponseType(200)]

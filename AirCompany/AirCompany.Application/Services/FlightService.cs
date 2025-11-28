@@ -7,14 +7,13 @@ using AutoMapper;
 
 namespace AirCompany.Application.Services;
 public class FlightService(
-    IRepository<Flight> flightRepository,
-    IRepository<AircraftModel> modelRepository,
+    IRepository<Flight, Guid> flightRepository,
+    IRepository<AircraftModel, Guid> modelRepository,
     IMapper mapper) : IFlightService
 {
     public async Task<FlightDto> Create(FlightCreateUpdateDto dto)
     {
         var entity = mapper.Map<Flight>(dto);
-        entity.Id = Guid.NewGuid();
         var result = await flightRepository.Create(entity);
 
         return mapper.Map<FlightDto>(result);
@@ -45,7 +44,7 @@ public class FlightService(
     public async Task<AircraftModelDto> GetAircraftModel(Guid flightId)
     {
         var flight = await flightRepository.Get(flightId) ?? throw new KeyNotFoundException($"Flight with Id {flightId} not found");
-        var model = await modelRepository.Get(flight.AircraftModel.Id) ?? throw new KeyNotFoundException($"Model with Id {flight.AircraftModel.Id} not found");
+        var model = await modelRepository.Get(flight.AircraftModelId) ?? throw new KeyNotFoundException($"Model with Id {flight.AircraftModelId} not found");
 
         return mapper.Map<AircraftModelDto>(model);
     }

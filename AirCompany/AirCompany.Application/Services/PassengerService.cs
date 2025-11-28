@@ -8,13 +8,12 @@ namespace AirCompany.Application.Services;
 
 
 public class PassengerService(
-    IRepository<Passenger> passengerRepository,
-    IMapper mapper): IApplicationService<PassengerDto, PassengerCreateUpdateDto>
+    IRepository<Passenger, Guid> passengerRepository,
+    IMapper mapper): IApplicationService<PassengerDto, PassengerCreateUpdateDto, Guid>
 {
     public async Task<PassengerDto> Create(PassengerCreateUpdateDto dto)
     {
         var entity = mapper.Map<Passenger>(dto);
-        entity.Id = Guid.NewGuid();
         var result = await passengerRepository.Create(entity);
 
         return mapper.Map<PassengerDto>(result);

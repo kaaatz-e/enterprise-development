@@ -6,13 +6,12 @@ using AirCompany.Application.Contracts;
 
 namespace AirCompany.Application.Services;
 public class AircraftFamilyService(
-    IRepository<AircraftFamily> familyRepository,
-    IMapper mapper) : IApplicationService<AircraftFamilyDto, AircraftFamilyCreateUpdateDto>
+    IRepository<AircraftFamily, Guid> familyRepository,
+    IMapper mapper) : IApplicationService<AircraftFamilyDto, AircraftFamilyCreateUpdateDto, Guid>
 {
     public async Task<AircraftFamilyDto> Create(AircraftFamilyCreateUpdateDto dto)
     {
         var entity = mapper.Map<AircraftFamily>(dto);
-        entity.Id = Guid.NewGuid();
         var result = await familyRepository.Create(entity);
 
         return mapper.Map<AircraftFamilyDto>(result);

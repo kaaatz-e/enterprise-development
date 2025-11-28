@@ -6,14 +6,13 @@ using AutoMapper;
 
 namespace AirCompany.Application.Services;
 public class AircraftModelService(
-    IRepository<AircraftModel> modelRepository,
-    IRepository<AircraftFamily> familyRepository,
+    IRepository<AircraftModel, Guid> modelRepository,
+    IRepository<AircraftFamily, Guid> familyRepository,
     IMapper mapper) : IAircraftModelService
 {
     public async Task<AircraftModelDto> Create(AircraftModelCreateUpdateDto dto)
     {
         var entity = mapper.Map<AircraftModel>(dto);
-        entity.Id = Guid.NewGuid();
         var result = await modelRepository.Create(entity);
 
         return mapper.Map<AircraftModelDto>(result);
@@ -44,7 +43,7 @@ public class AircraftModelService(
     public async Task<AircraftFamilyDto> GetAircraftFamily(Guid modelId)
     {
         var model = await modelRepository.Get(modelId) ?? throw new KeyNotFoundException($"Model with Id {modelId} not found");
-        var family = await familyRepository.Get(model.AircraftFamily.Id) ?? throw new KeyNotFoundException($"Family with Id {model.AircraftFamily.Id} not found");
+        var family = await familyRepository.Get(model.AircraftFamilyId) ?? throw new KeyNotFoundException($"Family with Id {model.AircraftFamilyId} not found");
 
         return mapper.Map<AircraftFamilyDto>(family);
     }

@@ -7,17 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Domain", "AirCom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Tests", "AirCompany.Tests\AirCompany.Tests.csproj", "{EA22D89F-B7AD-4A27-ACC7-0F10EF8441B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Infrastructure.EfCore", "AirCompany.Infrastructure.EfCore\AirCompany.Infrastructure.EfCore.csproj", "{0DF0C34E-5C0D-421A-9FFC-0F6191A8B30B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Application.Contracts", "AirCompany.Application.Contracts\AirCompany.Application.Contracts.csproj", "{0C60717A-B3AD-4C70-BBD5-C97751EAFA01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.AppHost", "AirCompany.AppHost\AirCompany.AppHost.csproj", "{F44411F5-F874-4A72-A1EE-570DAF68CA8D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.ServiceDefaults", "AirCompany.ServiceDefaults\AirCompany.ServiceDefaults.csproj", "{0E2E5517-3ACD-4C9F-B817-5D85B5455A58}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Api.Host", "AirCompany.Api.Host\AirCompany.Api.Host.csproj", "{00CF3063-6798-479B-B4AF-E9D06F98679C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Application", "AirCompany.Application\AirCompany.Application.csproj", "{2924CD2C-B35E-41B5-A1CE-975F6AA97714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.AppHost", "AirCompany.AppHost\AirCompany.AppHost.csproj", "{5BEE7FCC-DAEC-4517-A0F9-3956C2793A13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.ServiceDefaults", "AirCompany.ServiceDefaults\AirCompany.ServiceDefaults.csproj", "{2674518C-B40D-4FA9-ACC0-B2B6B72F8A70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Api.Host", "AirCompany.Api.Host\AirCompany.Api.Host.csproj", "{64B61728-38CC-4B83-AB13-CBAF547200EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCompany.Infrastructure.EfCore", "AirCompany.Infrastructure.EfCore\AirCompany.Infrastructure.EfCore.csproj", "{895B541F-35BE-4266-BA45-5F2F917F17B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,30 +33,30 @@ Global
 		{EA22D89F-B7AD-4A27-ACC7-0F10EF8441B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA22D89F-B7AD-4A27-ACC7-0F10EF8441B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA22D89F-B7AD-4A27-ACC7-0F10EF8441B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DF0C34E-5C0D-421A-9FFC-0F6191A8B30B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DF0C34E-5C0D-421A-9FFC-0F6191A8B30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DF0C34E-5C0D-421A-9FFC-0F6191A8B30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DF0C34E-5C0D-421A-9FFC-0F6191A8B30B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C60717A-B3AD-4C70-BBD5-C97751EAFA01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C60717A-B3AD-4C70-BBD5-C97751EAFA01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C60717A-B3AD-4C70-BBD5-C97751EAFA01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C60717A-B3AD-4C70-BBD5-C97751EAFA01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F44411F5-F874-4A72-A1EE-570DAF68CA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F44411F5-F874-4A72-A1EE-570DAF68CA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F44411F5-F874-4A72-A1EE-570DAF68CA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F44411F5-F874-4A72-A1EE-570DAF68CA8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E2E5517-3ACD-4C9F-B817-5D85B5455A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E2E5517-3ACD-4C9F-B817-5D85B5455A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E2E5517-3ACD-4C9F-B817-5D85B5455A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E2E5517-3ACD-4C9F-B817-5D85B5455A58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{00CF3063-6798-479B-B4AF-E9D06F98679C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00CF3063-6798-479B-B4AF-E9D06F98679C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00CF3063-6798-479B-B4AF-E9D06F98679C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00CF3063-6798-479B-B4AF-E9D06F98679C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2924CD2C-B35E-41B5-A1CE-975F6AA97714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2924CD2C-B35E-41B5-A1CE-975F6AA97714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2924CD2C-B35E-41B5-A1CE-975F6AA97714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2924CD2C-B35E-41B5-A1CE-975F6AA97714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BEE7FCC-DAEC-4517-A0F9-3956C2793A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BEE7FCC-DAEC-4517-A0F9-3956C2793A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BEE7FCC-DAEC-4517-A0F9-3956C2793A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BEE7FCC-DAEC-4517-A0F9-3956C2793A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2674518C-B40D-4FA9-ACC0-B2B6B72F8A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2674518C-B40D-4FA9-ACC0-B2B6B72F8A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2674518C-B40D-4FA9-ACC0-B2B6B72F8A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2674518C-B40D-4FA9-ACC0-B2B6B72F8A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B61728-38CC-4B83-AB13-CBAF547200EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B61728-38CC-4B83-AB13-CBAF547200EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B61728-38CC-4B83-AB13-CBAF547200EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B61728-38CC-4B83-AB13-CBAF547200EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895B541F-35BE-4266-BA45-5F2F917F17B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895B541F-35BE-4266-BA45-5F2F917F17B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895B541F-35BE-4266-BA45-5F2F917F17B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895B541F-35BE-4266-BA45-5F2F917F17B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

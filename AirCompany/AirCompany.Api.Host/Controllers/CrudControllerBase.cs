@@ -5,10 +5,11 @@ namespace AirCompany.Api.Host.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public abstract class CrudControllerBase<TDto, TCreateUpdateDto>(IApplicationService<TDto, TCreateUpdateDto> appService,
-    ILogger<CrudControllerBase<TDto, TCreateUpdateDto>> logger) : ControllerBase
+public abstract class CrudControllerBase<TDto, TCreateUpdateDto, TKey>(IApplicationService<TDto, TCreateUpdateDto, TKey> appService,
+    ILogger<CrudControllerBase<TDto, TCreateUpdateDto, TKey>> logger) : ControllerBase
     where TDto : class
     where TCreateUpdateDto : class
+    where TKey : struct
 {
     [HttpPost]
     [ProducesResponseType(201)]

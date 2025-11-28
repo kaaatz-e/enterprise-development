@@ -8,7 +8,7 @@ namespace AirCompany.Api.Host.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class TicketController(ITicketService service, ILogger<TicketController> logger)
-    : CrudControllerBase<TicketDto, TicketCreateUpdateDto>(service, logger)
+    : CrudControllerBase<TicketDto, TicketCreateUpdateDto, Guid>(service, logger)
 {
     [HttpGet("{id}/Flight")]
     [ProducesResponseType(200)]

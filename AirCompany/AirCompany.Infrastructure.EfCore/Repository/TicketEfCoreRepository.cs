@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace AirCompany.Infrastructure.EfCore.Repository;
-public class TicketEfCoreRepository(AirCompanyDbContext context) : IRepository<Ticket>
+public class TicketEfCoreRepository(AirCompanyDbContext context) : IRepository<Ticket, Guid>
 {
     public async Task<Ticket> Create(Ticket entity)
     {

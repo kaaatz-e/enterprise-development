@@ -1,4 +1,4 @@
-﻿using AirCompany.Application;
+using AirCompany.Application;
 using AirCompany.Application.Services;
 using AirCompany.Application.Contracts;
 using AirCompany.Application.Contracts.AircraftFamily;
@@ -14,39 +14,33 @@ using AirCompany.Infrastructure.EfCore.Repository;
 using AirCompany.ServiceDefaults;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
-using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.Services.AddSingleton<DataSeeder>();
+
 builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile(new AirCompanyProfile());
 });
 
-builder.Services.AddSingleton<DataSeeder>();
-
-builder.Services.AddScoped<IRepository<AircraftFamily>, AircraftFamilyEfCoreRepository>();
-builder.Services.AddScoped<IRepository<AircraftModel>, AircraftModelEfCoreRepository>();
-builder.Services.AddScoped<IRepository<Flight>, FlightEfCoreRepository>();
-builder.Services.AddScoped<IRepository<Passenger>, PassengerEfCoreRepository>();
-builder.Services.AddScoped<IRepository<Ticket>, TicketEfCoreRepository>();
+builder.Services.AddScoped<IRepository<AircraftFamily, Guid>, AircraftFamilyEfCoreRepository>();
+builder.Services.AddScoped<IRepository<AircraftModel, Guid>, AircraftModelEfCoreRepository>();
+builder.Services.AddScoped<IRepository<Flight, Guid>, FlightEfCoreRepository>();
+builder.Services.AddScoped<IRepository<Passenger, Guid>, PassengerEfCoreRepository>();
+builder.Services.AddScoped<IRepository<Ticket, Guid>, TicketEfCoreRepository>();
 
 builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
 builder.Services.AddScoped<IAircraftModelService, AircraftModelService>();
 builder.Services.AddScoped<IFlightService, FlightService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
-builder.Services.AddScoped<IApplicationService<AircraftFamilyDto, AircraftFamilyCreateUpdateDto>, AircraftFamilyService>();
-builder.Services.AddScoped<IApplicationService<PassengerDto, PassengerCreateUpdateDto>, PassengerService>();
+builder.Services.AddScoped<IApplicationService<AircraftFamilyDto, AircraftFamilyCreateUpdateDto, Guid>, AircraftFamilyService>();
+builder.Services.AddScoped<IApplicationService<PassengerDto, PassengerCreateUpdateDto, Guid>, PassengerService>();
 
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
-
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -62,10 +56,9 @@ builder.Services.AddSwaggerGen(c =>
             c.IncludeXmlComments(xmlPath);
     }
 
-    c.UseInlineDefinitionsForEnums();
 });
 
-builder.AddMongoDBClient("aircompanyClient");
+builder.AddMongoDBClient("aircompany");
 
 builder.Services.AddDbContext<AirCompanyDbContext>((services, o) =>
 {
@@ -74,6 +67,14 @@ builder.Services.AddDbContext<AirCompanyDbContext>((services, o) =>
 });
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 using (var scope = app.Services.CreateScope())
 {
@@ -100,14 +101,6 @@ using (var scope = app.Services.CreateScope())
 
         await context.SaveChangesAsync();
     }
-}
-
-app.MapDefaultEndpoints();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
