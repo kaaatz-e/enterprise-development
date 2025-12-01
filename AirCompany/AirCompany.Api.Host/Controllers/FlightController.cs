@@ -4,11 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AirCompany.Api.Host.Controllers;
 
+/// <summary>
+/// The flight management controller
+/// Inherits from the basic CRUD controller and adds methods to retrieve related passengers and aircraft models
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class FlightController(IFlightService service, ILogger<FlightController> logger)
     : CrudControllerBase<FlightDto, FlightCreateUpdateDto, Guid>(service, logger)
 {
+    /// <summary>
+    /// Getting the aircraft model associated with this flight
+    /// </summary>
+    /// <param name="id">Flight ID</param>
+    /// <returns>DTO of the model</returns>
     [HttpGet("{id}/AircraftModel")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]

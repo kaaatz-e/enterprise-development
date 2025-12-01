@@ -8,12 +8,20 @@ using System.Linq;
 
 namespace AirCompany.Application.Services;
 
+/// <summary>
+/// Airline analytics service for obtaining aggregated data on flights and passengers
+/// </summary>
+/// <param name="flightRepository">Repository for flight operations</param>
+/// <param name="passengerRepository">Repository for passenger operations</param>
+/// <param name="ticketRepository">Repository for ticket operations</param>
+/// <param name="mapper">Mapper for converting domain models to DTO</param>
 public class AnalyticsService(
     IRepository<Flight, Guid> flightRepository,
     IRepository<Passenger, Guid> passengerRepository,
     IRepository<Ticket, Guid> ticketRepository,
     IMapper mapper) : IAnalyticsService
 {
+    /// <inheritdoc/>
     public async Task<IList<FlightDto>> GetTop5FlightsByPassengerCount()
     {
         var flights = await flightRepository.GetAll();
@@ -27,6 +35,7 @@ public class AnalyticsService(
         return mapper.Map<IList<FlightDto>>(topFlights);
     }
 
+    /// <inheritdoc/>
     public async Task<IList<FlightDto>> GetFlightsWithMinimumDuration()
     {
         var allFlights = await flightRepository.GetAll();
@@ -42,6 +51,7 @@ public class AnalyticsService(
         return mapper.Map<IList<FlightDto>>(flights);
     }
 
+    /// <inheritdoc/>
     public async Task<IList<PassengerDto>> GetPassengersWithZeroBaggageByFlight(Guid flightId)
     {
         var tickets = await ticketRepository.GetAll();
@@ -61,6 +71,7 @@ public class AnalyticsService(
         return mapper.Map<IList<PassengerDto>>(result);
     }
 
+    /// <inheritdoc/>
     public async Task<IList<FlightDto>> GetFlightsByModelAndPeriod(Guid modelId, DateTime startPeriod, DateTime endPeriod)
     {
         var flights = await flightRepository.GetAll();
@@ -74,6 +85,7 @@ public class AnalyticsService(
         return mapper.Map<IList<FlightDto>>(result);
     }
 
+    /// <inheritdoc/>
     public async Task<IList<FlightDto>> GetFlightsByRoute(string departureAirport, string arrivalAirport)
     {
         var flights = await flightRepository.GetAll();

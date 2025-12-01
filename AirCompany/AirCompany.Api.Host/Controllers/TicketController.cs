@@ -5,11 +5,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AirCompany.Api.Host.Controllers;
 
+/// <summary>
+/// The ticket management controller
+/// Inherits from the basic CRUD controller and adds methods to retrieve the associated passenger and flight
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class TicketController(ITicketService service, ILogger<TicketController> logger)
     : CrudControllerBase<TicketDto, TicketCreateUpdateDto, Guid>(service, logger)
 {
+    /// <summary>
+    /// Receipt of the flight to which this ticket is attached
+    /// </summary>
+    /// <param name="id">Ticket ID</param>
+    /// <returns>Flight DTO</returns>
     [HttpGet("{id}/Flight")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
@@ -35,6 +44,11 @@ public class TicketController(ITicketService service, ILogger<TicketController> 
         }
     }
 
+    /// <summary>
+    /// Receipt of the passenger who owns this ticket
+    /// </summary>
+    /// <param name="id">Ticket ID</param>
+    /// <returns>Passenger's DTO</returns>
     [HttpGet("{id}/Passenger")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]

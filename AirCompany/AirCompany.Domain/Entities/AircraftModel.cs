@@ -15,6 +15,9 @@ public class AircraftModel
     /// </summary>
     public AircraftFamily? AircraftFamily { get; set; }
 
+    /// <summary>
+    /// The key to the <see cref="AircraftFamily"/> to which the model belongs
+    /// </summary>
     public required Guid AircraftFamilyId { get; set; } 
 
     /// <summary>

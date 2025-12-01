@@ -8,11 +8,16 @@ using AutoMapper;
 
 namespace AirCompany.Application;
 
+/// <summary>
+/// AutoMapper profile for the air company
+/// </summary>
 public class AirCompanyProfile : Profile
 {
+    /// <summary>
+    /// A profile constructor that creates links between Entity and Dto classes
+    /// </summary>
     public AirCompanyProfile()
     {
-
         CreateMap<AircraftFamily, AircraftFamilyDto>();
         CreateMap<AircraftFamilyCreateUpdateDto, AircraftFamily>();
 

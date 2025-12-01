@@ -4,11 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AirCompany.Api.Host.Controllers;
 
+/// <summary>
+/// The controller for controlling Aircraft models
+/// Inherits from the basic CRUD controller and adds methods for obtaining related aircraft and flight families
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class AircraftModelController(IAircraftModelService service, ILogger<AircraftModelController> logger)
     : CrudControllerBase<AircraftModelDto, AircraftModelCreateUpdateDto, Guid>(service, logger)
 {
+    /// <summary>
+    /// Getting the aircraft family associated with this model
+    /// </summary>
+    /// <param name="id">Model ID</param>
+    /// <returns>DTO family</returns>
     [HttpGet("{id}/AircraftFamily")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]

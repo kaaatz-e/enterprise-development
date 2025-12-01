@@ -45,5 +45,8 @@ public class Flight
     /// </summary>
     public AircraftModel? AircraftModel { get; set; }
 
+    /// <summary>
+    /// The key to the <see cref="AircraftModel"/> operating the flight
+    /// </summary>
     public required Guid AircraftModelId { get; set; }
 }

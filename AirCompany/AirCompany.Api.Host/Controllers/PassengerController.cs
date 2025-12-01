@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AirCompany.Api.Host.Controllers;
 
+/// <summary>
+/// API Controller for managing Passenger entities
+/// Inherits standard CRUD
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class PassengerController(IApplicationService<PassengerDto, PassengerCreateUpdateDto, Guid> service, ILogger<PassengerController> logger)

@@ -5,10 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AirCompany.Api.Host.Controllers;
 
+/// <summary>
+/// The controller for airline analytics
+/// Provides aggregated data on flights and passengers
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsController> logger) : Controller
 {
+    /// <summary>
+    /// Getting the top 5 flights by number of passengers
+    /// </summary>
+    /// <returns>List of DTO flights</returns>
     [HttpGet("top-flights-by-passenger")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
@@ -28,6 +36,10 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
         }
     }
 
+    /// <summary>
+    /// Getting flights with a minimum duration
+    /// </summary>
+    /// <returns>List of DTO flights</returns>
     [HttpGet("flights-with-minimum-duration")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
@@ -47,6 +59,11 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
         }
     }
 
+    /// <summary>
+    /// Receiving passengers on the selected flight without luggage
+    /// </summary>
+    /// <param name="flightId">Flight ID</param>
+    /// <returns>List of DTO passengers</returns>
     [HttpGet("passengers-with-zero-baggage-by-flight")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
@@ -66,6 +83,13 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
         }
     }
 
+    /// <summary>
+    /// Getting flights of a certain aircraft model in a given period
+    /// </summary>
+    /// <param name="modelId">Model ID</param>
+    /// <param name="startPeriod">Beginning of the period</param>
+    /// <param name="endPeriod">End of the period</param>
+    /// <returns>List of DTO flights</returns>
     [HttpGet("flights-by-model-and-period")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
@@ -85,6 +109,12 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
         }
     }
 
+    /// <summary>
+    /// Receiving flights between two airports
+    /// </summary>
+    /// <param name="departureAirport">Departure airport</param>
+    /// <param name="arrivalAirport">Airport of arrival</param>
+    /// <returns>List of DTO flights</returns>
     [HttpGet("flights-by-route")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]

@@ -15,6 +15,9 @@ public class Ticket
     /// </summary>
     public Flight? Flight { get; set; }
 
+    /// <summary>
+    /// The key for the <see cref="Flight"/> to which the ticket belongs
+    /// </summary>
     public required Guid FlightId { get; set; }
 
     /// <summary>
@@ -22,6 +25,9 @@ public class Ticket
     /// </summary>
     public Passenger? Passenger { get; set; }
 
+    /// <summary>
+    /// The key belongs to the <see cref="Passenger"/> who owns the ticket
+    /// </summary>
     public required Guid PassengerId { get; set; }
 
     /// <summary>

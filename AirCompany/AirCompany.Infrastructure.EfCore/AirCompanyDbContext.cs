@@ -6,14 +6,39 @@ using System.Reflection.Emit;
 
 namespace AirCompany.Infrastructure.EfCore;
 
+/// <summary>
+/// Represents the database context for the AirCompany
+/// </summary>
 public class AirCompanyDbContext(DbContextOptions<AirCompanyDbContext> options) : DbContext(options)
 {
+    /// <summary>
+    /// Represents the collection of aircraft families in the database
+    /// </summary>
     public DbSet<AircraftFamily> AircraftFamilies { get; set; }
+
+    /// <summary>
+    /// Represents the collection of aircraft models in the database
+    /// </summary>
     public DbSet<AircraftModel> AircraftModels { get; set; }
+
+    /// <summary>
+    /// Represents the collection of passengers in the database
+    /// </summary>
     public DbSet<Passenger> Passengers { get; set; }
+
+    /// <summary>
+    /// Represents the collection of flights in the database
+    /// </summary>
     public DbSet<Flight> Flights { get; set; }
+
+    /// <summary>
+    /// Represents the collection of tickets in the database
+    /// </summary>
     public DbSet<Ticket> Tickets { get; set; }
 
+    /// <summary>
+    /// Configuring entities and their relationships
+    /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         Database.AutoTransactionBehavior = AutoTransactionBehavior.Never;
