@@ -13,10 +13,12 @@
 	<ItemGroup>
 		<PackageReference Include="Aspire.Hosting.AppHost" Version="13.0.0" />
 		<PackageReference Include="Aspire.Hosting.MongoDB" Version="13.0.0" />
+		<PackageReference Include="Aspire.Hosting.Nats" Version="13.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\AirCompany.Api.Host\AirCompany.Api.Host.csproj" />
+		<ProjectReference Include="..\AirCompany.Generator.Nats.Host\AirCompany.Generator.Nats.Host.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -109,7 +109,7 @@ public class TicketConsumer(
             }
             catch (OperationCanceledException)
             {
-                logger.LogWarning("Processing cancelled: service is shutting down.");
+                logger.LogWarning("Ticket consumer cancelled: service is shutting down.");
             }
             catch (Exception ex)
             {
