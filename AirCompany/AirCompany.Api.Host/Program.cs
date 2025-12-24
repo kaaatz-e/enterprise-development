@@ -11,6 +11,8 @@ using AirCompany.Domain.DataSeeder;
 using AirCompany.Domain.Entities;
 using AirCompany.Infrastructure.EfCore;
 using AirCompany.Infrastructure.EfCore.Repository;
+using AirCompany.Infrastructure.Nats.Consumers;
+using AirCompany.Infrastructure.Nats.Settings;
 using AirCompany.ServiceDefaults;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
@@ -59,6 +61,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.AddMongoDBClient("aircompany");
+builder.AddNatsClient("nats");
+
+builder.Services.Configure<NatsConsumerSettings>(builder.Configuration.GetSection("NatsConsumer"));
+builder.Services.AddHostedService<TicketConsumer>();
 
 builder.Services.AddDbContext<AirCompanyDbContext>((services, o) =>
 {
