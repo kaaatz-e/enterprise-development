@@ -10,6 +10,8 @@ using Microsoft.Extensions.Options;
 using NATS.Client.Core;
 using NATS.Client.JetStream;
 using NATS.Client.JetStream.Models;
+using NATS.Client.Serializers.Json;
+using NATS.Net;
 using Polly;
 
 namespace AirCompany.Infrastructure.Nats.Consumers;
@@ -23,6 +25,21 @@ public class TicketConsumer(
     IOptions<NatsConsumerSettings> consumerSettings,
     ILogger<TicketConsumer> logger) : BackgroundService
 {
+    private readonly ResiliencePipeline _retryPipeline = new ResiliencePipelineBuilder()
+        .AddRetry(new Polly.Retry.RetryStrategyOptions
+        {
+            MaxRetryAttempts = consumerSettings.Value.MaxRetryAttempts,
+            Delay = TimeSpan.FromSeconds(consumerSettings.Value.RetryDelaySeconds),
+            BackoffType = DelayBackoffType.Exponential,
+            OnRetry = args =>
+            {
+                logger.LogWarning("Retry {AttemptNumber} to connect to NATS JetStream consumer. Waiting {Delay}ms",
+                    args.AttemptNumber, args.RetryDelay.TotalMilliseconds);
+                return ValueTask.CompletedTask;
+            }
+        })
+        .Build();
+
     /// <summary>
     /// Connects to JetStream and handles incoming ticket messages
     /// </summary>
@@ -32,26 +49,11 @@ public class TicketConsumer(
     {
         var settings = consumerSettings.Value;
 
-        var retryPipeline = new ResiliencePipelineBuilder()
-            .AddRetry(new Polly.Retry.RetryStrategyOptions
-            {
-                MaxRetryAttempts = settings.MaxRetryAttempts,
-                Delay = TimeSpan.FromSeconds(settings.RetryDelaySeconds),
-                BackoffType = DelayBackoffType.Exponential,
-                OnRetry = args =>
-                {
-                    logger.LogWarning("Retry {AttemptNumber} to connect to NATS JetStream consumer. Waiting {Delay}ms",
-                        args.AttemptNumber, args.RetryDelay.TotalMilliseconds);
-                    return ValueTask.CompletedTask;
-                }
-            })
-            .Build();
-
         INatsJSConsumer? consumer = null;
 
-        await retryPipeline.ExecuteAsync(async ct =>
+        await _retryPipeline.ExecuteAsync(async ct =>
         {
-            var js = new NatsJSContext((NatsConnection)natsConnection);
+            var js = natsConnection.CreateJetStreamContext();
 
             var consumerConfig = new ConsumerConfig(settings.ConsumerName)
             {
@@ -81,7 +83,7 @@ public class TicketConsumer(
 
         logger.LogInformation("Ticket consumer started, listening on {Subject}", settings.SubjectName);
 
-        await foreach (var msg in consumer.ConsumeAsync<TicketCreateUpdateDto>(cancellationToken: stoppingToken))
+        await foreach (var msg in consumer.ConsumeAsync(serializer: NatsJsonSerializer<TicketCreateUpdateDto>.Default, cancellationToken: stoppingToken))
         {
             try
             {
@@ -138,6 +140,6 @@ public class TicketConsumer(
 
         var createdTicket = await ticketService.Create(ticket);
 
-        logger.LogDebug("Database record created: TicketId {Id}", createdTicket.Id);
+        logger.LogInformation("Database record created: TicketId {Id}", createdTicket.Id);
     }
 }
