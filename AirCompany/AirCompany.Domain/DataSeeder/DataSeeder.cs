@@ -134,6 +134,7 @@ public class DataSeeder
     private static List<Flight> InitFlight(List<AircraftModel> models) => [
         new Flight
         { 
+            Id = new Guid("f1111111-1111-1111-1111-111111111111"),
             Code = "U6713",
             DepartureAirport = "SVX",
             ArrivalAirport = "DME",
@@ -144,6 +145,7 @@ public class DataSeeder
         },
         new Flight
         { 
+            Id = new Guid("f2222222-2222-2222-2222-222222222222"),
             Code = "SU2602",
             DepartureAirport = "SVO",
             ArrivalAirport = "LED",
@@ -154,6 +156,7 @@ public class DataSeeder
         },
         new Flight
         { 
+            Id = new Guid("f3333333-3333-3333-3333-333333333333"),
             Code = "SU2603",
             DepartureAirport = "LED",
             ArrivalAirport = "SVO",
@@ -164,6 +167,7 @@ public class DataSeeder
         },
         new Flight
         { 
+            Id = new Guid("f4444444-4444-4444-4444-444444444444"),
             Code = "S70105",
             DepartureAirport = "DME",
             ArrivalAirport = "OVB",
@@ -174,6 +178,7 @@ public class DataSeeder
         },
         new Flight
         {
+            Id = new Guid("f5555555-5555-5555-5555-555555555555"),
             Code = "UT233",
             DepartureAirport = "VKO",
             ArrivalAirport = "TJM",
@@ -184,6 +189,7 @@ public class DataSeeder
         },
         new Flight
         {
+            Id = new Guid("f6666666-6666-6666-6666-666666666666"),
             Code = "SU1217",
             DepartureAirport = "KUF",
             ArrivalAirport = "SVO",
@@ -194,6 +200,7 @@ public class DataSeeder
         },
         new Flight
         {
+            Id = new Guid("f7777777-7777-7777-7777-777777777777"),
             Code = "SU520",
             DepartureAirport = "SVO",
             ArrivalAirport = "DXB",
@@ -204,6 +211,7 @@ public class DataSeeder
         },
         new Flight
         {
+            Id = new Guid("f8888888-8888-8888-8888-888888888888"),
             Code = "SU2964",
             DepartureAirport = "AER",
             ArrivalAirport = "KUF",
@@ -214,6 +222,7 @@ public class DataSeeder
         },
         new Flight
         {
+            Id = new Guid("f9999999-9999-9999-9999-999999999999"),
             Code = "SU214",
             DepartureAirport = "SVO",
             ArrivalAirport = "JFK",
@@ -224,6 +233,7 @@ public class DataSeeder
         },
         new Flight
         {
+            Id = new Guid("faaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
             Code = "DP751",
             DepartureAirport = "VKO",
             ArrivalAirport = "SVX",
@@ -238,18 +248,18 @@ public class DataSeeder
     /// Initializes <see cref="Passenger"/> with test data
     /// </summary>
     private static List<Passenger> InitPassenger() => [
-        new Passenger {PassportNumber = "716546245", FullName = "Sidorova Anna Sergeevna", BirthDate = new DateOnly(2002, 5, 18)},
-        new Passenger {PassportNumber = "651465468", FullName = "Alekseev V.", BirthDate = new DateOnly(1996, 7, 14)},
-        new Passenger {PassportNumber = "168425152", FullName = "Kozlov Dmitry Vladimirovich", BirthDate = new DateOnly(1995, 4, 12)},
-        new Passenger {PassportNumber = "425682755", FullName = "Pavlova Maria Viktorovna", BirthDate = new DateOnly(1973, 9, 18)},
-        new Passenger {PassportNumber = "818928973", FullName = "Koroleva Tatiana Olegovna", BirthDate = new DateOnly(1987, 12, 8)},
-        new Passenger {PassportNumber = "979812364", FullName = "Petrov P.", BirthDate = new DateOnly(1976, 3, 16)},
-        new Passenger {PassportNumber = "245687261", FullName = "Nikolaev N.", BirthDate = new DateOnly(2006, 11, 30)},
-        new Passenger {PassportNumber = "358143898", FullName = "Alexandrova Olga", BirthDate = new DateOnly(2004, 6, 3)},
-        new Passenger {PassportNumber = "584555219", FullName = "Mikheev Vasily", BirthDate = new DateOnly(1961, 6, 25)},
-        new Passenger {PassportNumber = "906442887", FullName = "Smirnov S.", BirthDate = new DateOnly(1986, 5, 19)},
-        new Passenger {PassportNumber = "315764121", FullName = "Sergeev Oleg", BirthDate = new DateOnly(1993, 8, 7)},
-        new Passenger {PassportNumber = "174095946", FullName = "Morozov Andrey", BirthDate = new DateOnly(2000, 10, 3)}
+        new Passenger {Id = new Guid("e1111111-1111-1111-1111-111111111111"), PassportNumber = "716546245", FullName = "Sidorova Anna Sergeevna", BirthDate = new DateOnly(2002, 5, 18)},
+        new Passenger {Id = new Guid("e2222222-2222-2222-2222-222222222222"), PassportNumber = "651465468", FullName = "Alekseev V.", BirthDate = new DateOnly(1996, 7, 14)},
+        new Passenger {Id = new Guid("e3333333-3333-3333-3333-333333333333"), PassportNumber = "168425152", FullName = "Kozlov Dmitry Vladimirovich", BirthDate = new DateOnly(1995, 4, 12)},
+        new Passenger {Id = new Guid("e4444444-4444-4444-4444-444444444444"), PassportNumber = "425682755", FullName = "Pavlova Maria Viktorovna", BirthDate = new DateOnly(1973, 9, 18)},
+        new Passenger {Id = new Guid("e5555555-5555-5555-5555-555555555555"), PassportNumber = "818928973", FullName = "Koroleva Tatiana Olegovna", BirthDate = new DateOnly(1987, 12, 8)},
+        new Passenger {Id = new Guid("e6666666-6666-6666-6666-666666666666"), PassportNumber = "979812364", FullName = "Petrov P.", BirthDate = new DateOnly(1976, 3, 16)},
+        new Passenger {Id = new Guid("e7777777-7777-7777-7777-777777777777"), PassportNumber = "245687261", FullName = "Nikolaev N.", BirthDate = new DateOnly(2006, 11, 30)},
+        new Passenger {Id = new Guid("e8888888-8888-8888-8888-888888888888"), PassportNumber = "358143898", FullName = "Alexandrova Olga", BirthDate = new DateOnly(2004, 6, 3)},
+        new Passenger {Id = new Guid("e9999999-9999-9999-9999-999999999999"), PassportNumber = "584555219", FullName = "Mikheev Vasily", BirthDate = new DateOnly(1961, 6, 25)},
+        new Passenger {Id = new Guid("eaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), PassportNumber = "906442887", FullName = "Smirnov S.", BirthDate = new DateOnly(1986, 5, 19)},
+        new Passenger {Id = new Guid("ebbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), PassportNumber = "315764121", FullName = "Sergeev Oleg", BirthDate = new DateOnly(1993, 8, 7)},
+        new Passenger {Id = new Guid("eccccccc-cccc-cccc-cccc-cccccccccccc"), PassportNumber = "174095946", FullName = "Morozov Andrey", BirthDate = new DateOnly(2000, 10, 3)}
         ];
 
 

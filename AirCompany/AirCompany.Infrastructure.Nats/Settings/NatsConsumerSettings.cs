@@ -1,14 +1,32 @@
 namespace AirCompany.Infrastructure.Nats.Settings;
 
+/// <summary>
+/// Configuration settings for NATS consumer
+/// </summary>
 public class NatsConsumerSettings
 {
-    public string StreamName { get; set; } = "TICKETS";
+    /// <summary>
+    /// Name of the JetStream stream
+    /// </summary>
+    public string StreamName { get; init; } = "TICKETS";
 
-    public string ConsumerName { get; set; } = "ticket-consumer";
+    /// <summary>
+    /// Name of the consumer
+    /// </summary>
+    public string ConsumerName { get; init; } = "ticket-consumer";
 
-    public string SubjectName { get; set; } = "ticket.create";
+    /// <summary>
+    /// Subject name for consuming messages
+    /// </summary>
+    public string SubjectName { get; init; } = "ticket.create";
 
-    public int MaxRetryAttempts { get; set; } = 10;
+    /// <summary>
+    /// Maximum retry attempts for NATS operations
+    /// </summary>
+    public int MaxRetryAttempts { get; init; } = 10;
 
-    public int RetryDelaySeconds { get; set; } = 2;
+    /// <summary>
+    /// Delay between retries in seconds
+    /// </summary>
+    public int RetryDelaySeconds { get; init; } = 2;
 }
